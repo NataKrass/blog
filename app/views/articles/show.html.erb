@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @article %>
+
+<div>
+  <h1>title article: <%= @article.title%></h1>
+  <p><%= @article.description %></p>
+  <p> by <%= @article.user.username if @article.user %></p>
+  <% if logged_in? && (@article.user == current_user || current_user.admin?) %>
+    <%= link_to "Edit this article", edit_article_path(@article) %> |
+    <%= link_to "Back to articles", articles_path %>
+    <%= button_to "Destroy this article", @article, method: :delete %>
+  <% end %>
+  
+</div>

@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Articles</h1>
+
+<%= will_paginate @articles %>
+
+<div id="articles">
+  <% @articles.each do |article| %>
+    <%= render article %>
+    <p>
+      <%= link_to "Show this article", article %>
+    </p>
+    <p>by <%= article.user.username if article.user %></p>
+  <% end %>
+</div>
+
+<%= link_to "New article", new_article_path %>
+
+
